@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
 //We will connect our server application to a real database using https://www.mongodb.com/cloud/atlas
 /* const CONNECTION_URL =
   "mongodb+srv://agbley:mawunyadb@mawunyaclustertwo.ggjljxa.mongodb.net/"; */
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 10000;
 
 mongoose
   .connect(process.env.CONNECTION_URL, {
