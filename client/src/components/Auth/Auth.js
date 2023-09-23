@@ -8,11 +8,12 @@ import {
   Container,
 } from "@material-ui/core";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import { GoogleLogin, googleLogout } from "@react-oauth/google";
+import { GoogleLogin } from "@react-oauth/google";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import useStyles from "./styles";
 import Input from "./Input";
 import { signin, signup } from "../../actions/auth";
+import { AUTH } from "../../constants/actionTypes";
 import Icon from "./Icon";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -56,13 +57,13 @@ const Auth = () => {
     const result = res?.profileObj;
     const token = res?.tokenId;
     try {
-      dispatch({ type: "AUTH", data: { result, token } });
+      dispatch({ type: AUTH, data: { result, token } });
       navigate("/");
     } catch (error) {
       console.log(error);
     }
   };
-  const googleFailure = (error) => {
+  const googleError = (error) => {
     console.log(error);
     console.log("Google Sign In was unsuccessful. Try Again Later");
   };
@@ -142,17 +143,17 @@ const Auth = () => {
                 </Button>
               )}
               onSuccess={googleSuccess}
-              onFaluire={googleFailure}
+              onFailure={googleError}
               cookiePolicy="single_host_origin"
             />
           </GoogleOAuthProvider>
           <Grid container justifyContent="flex-end">
             <Grid item>
-              <button onClick={switchMode}>
+              <Button onClick={switchMode}>
                 {isSignup
                   ? "Already have an account? Sign In"
                   : "Don't have an account? Sign Up"}
-              </button>
+              </Button>
             </Grid>
           </Grid>
         </form>

@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import decode from "jwt-decode";
 import { AppBar, Avatar, Button, Toolbar, Typography } from "@material-ui/core";
 import memories from "../../images/memories.png";
+import * as actionType from "../../constants/actionTypes";
 import useStyles from "./Styles";
 
 const Navbar = () => {
@@ -14,7 +15,7 @@ const Navbar = () => {
   const location = useLocation();
   console.log("user");
   const logout = () => {
-    dispatch({ type: "LOGOUT" });
+    dispatch({ type: actionType.LOGOUT });
     navigate("auth");
     setUser(null);
   };
@@ -51,11 +52,10 @@ const Navbar = () => {
               alt={user.result.name}
               src={user.result.imageUrl}
             >
-              {user.result.name.charAt(0)}
+              {user?.result.name.charAt(0)}
             </Avatar>
             <Typography className={classes.userName} varient="h6">
-              {" "}
-              {user.result.name}
+              {user?.result.name}
             </Typography>
             <Button
               variant="contained"
