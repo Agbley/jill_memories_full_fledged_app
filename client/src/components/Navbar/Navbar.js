@@ -49,8 +49,8 @@ const Navbar = () => {
           <div className={classes.profile}>
             <Avatar
               className={classes.purple}
-              alt={user.result.name}
-              src={user.result.imageUrl}
+              alt={user?.result.name}
+              src={user?.result.imageUrl}
             >
               {user?.result.name.charAt(0)}
             </Avatar>
