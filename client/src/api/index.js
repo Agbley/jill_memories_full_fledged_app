@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://jill-memories-full-fledged-sever-app.onrender.com",
+  baseURL: "http://localhost:5000",
+  // baseURL: "https://jill-memories-full-fledged-sever-app.onrender.com",
 });
 
 API.interceptors.request.use((req) => {
